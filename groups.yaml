@@ -1,0 +1,125 @@
+  default_view:
+    view: yes
+    entities:
+      - group.automation
+      - group.climate
+      - group.hallway_lights
+      - group.living_room_lights
+      - group.living_room_remote
+      - group.device_locations
+      - group.plants
+  automation:
+    name: Automation
+    icon: mdi:message-alert
+    entities:
+      - automation.turn_off_hallway_light_at_<time>
+      - automation.turn_on_hallway_light_when_sun_sets
+  battery_levels:
+    name: Battery Levels
+    entities:
+      - sensor.hallway_plant_battery
+      - sensor.living_room_plant_battery
+  cameras:
+    name: Cameras
+    view: yes
+    icon: mdi:camera
+    entities:
+      - camera.kitchen
+      - camera.hallwaycam
+  climate:
+    name: Climate
+    icon: mdi:weather-partlycloudy
+    entities:
+      - climate.living_room
+  device_locations:
+    name: Device Locations
+    entities:
+      - device_tracker.<person>s_phone
+      - device_tracker.<person>s_ipad
+      - device_tracker.<person>s_phone
+  hallway_lights:
+    name: Hallway Lights
+    icon: mdi:lightbulb-on
+    entities:
+      - switch.hallway_lamp
+  household:
+    name: Household
+    entities:
+      - device_tracker.<person>s_phone
+      - device_tracker.<person>s_phone
+  living_room_lights:
+    name: Living Room Lights
+    icon: mdi:lightbulb-on
+    entities:
+      - switch.living_room_lamp
+      - switch.sofa_lamp
+      - switch.fireplace
+  living_room_remote:
+     name: Media Remote
+     icon: mdi:remote
+     entities:
+      - media_player.kodi
+  plants:                                             
+     name: Plants                                     
+     icon: mdi:flower                                 
+     entities:                                        
+      - sensor.hallway_plant_battery                  
+      - sensor.hallway_plant_light_intensity          
+      - sensor.hallway_plant_moisture                 
+      - sensor.hallway_plant_temperature              
+      - sensor.living_room_plant_battery              
+      - sensor.living_room_plant_light_intensity      
+      - sensor.living_room_plant_moisture       
+      - sensor.living_room_plant_temperature    
+      - sensor.dining_room_plant_battery        
+      - sensor.dining_room_plant_light_intensity
+      - sensor.dining_room_plant_moisture       
+      - sensor.dining_room_plant_temperature    
+  notifications:                                
+    name: Notifications                         
+    view: yes                                   
+    icon: mdi:message-alert                     
+    entities:                                   
+      - automation.hallway_plant_moisture_monitor
+      - automation.living_room_plant_moisture_monitor
+      - automation.dining_room_plant_moisture_monitor
+      - automation.hallway_plant_battery_monitoring  
+      - automation.living_room_plant_battery_monitoring
+      - automation.dining_room_plant_battery_monitoring
+      - automation.heating_on                          
+      - automation.heating_off                         
+  sensors:                                             
+    name: Sensors                                      
+    view: yes                                          
+    icon: mdi:gauge                                    
+    entities:                                          
+      - group.battery_levels                           
+      - group.indoor_temperature                       
+      - group.household                                
+      - group.weather                                  
+  sonos_music:                                         
+    name: Sonos Music                                  
+    icon: mdi:music-note                               
+    view: yes                                          
+    entities:                                          
+      - media_player.hallway                           
+      - media_player.kitchen                           
+      - media_player.living_room                       
+  indoor_temperature:                                  
+    name: Indoor Temperature                           
+    entities:                                          
+      - sensor.hallway_plant_temperature               
+      - sensor.living_room_plant_temperature           
+#      - climate.living_room.temperature               
+  weather:                                             
+    name: Weather                                      
+    entities:                                          
+      - sun.sun                                        
+      - sensor.yr_symbol                               
+      - sensor.yr_temperature                          
+      - sensor.yr_precipitation                        
+      - sensor.yr_cloudiness                           
+      - sensor.yr_fog                                  
+      - sensor.yr_humidity                             
+      - sensor.yr_wind_speed                           
+      - sensor.yr_wind_direction                       
