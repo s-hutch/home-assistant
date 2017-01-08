@@ -130,3 +130,13 @@
       data_template:                                            
         title: "Heating"                                        
         message: "Heating is off"     
+  - alias: Digital Ocean Droplet Down                           
+    trigger:                                                    
+      platform: state                                           
+      entity_id: <droplet>                      
+      to: "off"                                                 
+    action:                                                     
+      service: notify.instapush                                 
+      data_template:                                            
+        title: "Digital Ocean"                                  
+        message: "Droplet is down"  
