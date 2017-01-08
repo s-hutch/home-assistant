@@ -1,0 +1,75 @@
+#################################################################
+## Customize
+#################################################################
+
+# devices
+  device_tracker.<person's name here>_phone:
+    icon: mdi:human-<gender here>
+    friendly_name: <person's name here>
+  device_tracker.<person's name here>_ipad:
+    icon: mdi:tablet-iPad
+    friendly_name: <person's name here> iPad
+  device_tracker.<person's name here>_phone:
+    icon: mdi:human-<gender here>
+    friendly_name: <person's name here>
+
+# sensors
+  # plant sensors
+  sensor.hallway_plant_battery:
+    icon: mdi:battery-charging
+  sensor.hallway_plant_light_intensity:
+    icon: mdi:weather-sunny
+  sensor.hallway_plant_moisture:
+    icon: mdi:water
+  sensor.hallway_plant_temperature:
+    icon: mdi:thermometer
+  sensor.living_room_humidity:
+    icon: mdi:water-percent
+  sensor.living_room_plant_battery:
+    icon: mdi:battery-charging
+  sensor.living_room_plant_light_intensity:
+    icon: mdi:weather-sunny
+  sensor.living_room_plant_moisture:
+    icon: mdi:water
+  sensor.living_room_plant_temperature:
+    icon: mdi:thermometer
+  sensor.living_room_temperature:
+    icon: mdi:thermometer
+
+  # weather
+  sensor.yr_cloudiness:
+    icon: mdi:weather-cloudy
+    friendly_name: Cloudiness
+  sensor.yr_fog:
+    icon: mdi:weather-fog
+    friendly_name: Fog
+  sensor.yr_humidity:
+    icon: mdi:water-percent
+    friendly_name: Humidity
+  sensor.yr_precipitation:
+    icon: mdi:weather-rainy
+    friendly_name: Precipitation
+  sensor.yr_symbol:
+    friendly_name: Forecast
+  sensor.yr_temperature:
+    icon: mdi:thermometer
+    friendly_name: Temperature
+  sensor.yr_wind_direction:
+    icon: mdi:weather-windy
+    friendly_name: Wind Direction
+  sensor.yr_wind_speed:
+    icon: mdi:speedometer
+    friendly_name: Wind Speed
+
+
+# switch
+  switch.fireplace:
+    icon: mdi:water-percen
+  switch.hallway_lamp:
+    icon: mdi:lightbulb-on-outline
+  switch.living_room_lamp:
+    icon: mdi:lightbulb-on-outline
+  switch.sofa_lamp:
+    icon: mdi:lightbulb-on-outline
+    
+    
