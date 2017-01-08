@@ -124,7 +124,7 @@
     entities:                                          
       - sensor.hallway_plant_temperature               
       - sensor.living_room_plant_temperature           
-#      - climate.living_room.temperature               
+      - sensor.living_room_thermostat_temperature             
   weather:                                             
     name: Weather                                      
     entities:                                          
