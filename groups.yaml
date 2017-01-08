@@ -41,6 +41,13 @@
       - device_tracker.<person>s_phone
       - device_tracker.<person>s_ipad
       - device_tracker.<person>s_phone
+      - device_tracker.<person>s_ipad
+  digital_ocean:                       
+    name: Digital Ocean Droplet        
+    icon: mdi:server            
+    entities:                          
+      - binary_sensor.<droplet>
+      - switch.<droplet>
   hallway_lights:
     name: Hallway Lights
     icon: mdi:lightbulb-on
@@ -100,7 +107,8 @@
       - group.battery_levels                           
       - group.indoor_temperature                       
       - group.household                                
-      - group.weather                                  
+      - group.weather      
+      - group.digital_ocean
   sonos_music:                                         
     name: Sonos Music                                  
     icon: mdi:music-note                               
