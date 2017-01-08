@@ -35,6 +35,14 @@
     icon: mdi:thermometer
   sensor.living_room_temperature:
     icon: mdi:thermometer
+  sensor.dining_room_plant_battery:        
+    icon: mdi:battery-charging             
+  sensor.dining_room_plant_light_intensity:
+    icon: mdi:weather-sunny                
+  sensor.dining_room_plant_moisture:       
+    icon: mdi:water                        
+  sensor.dining_room_plant_temperature:    
+    icon: mdi:thermometer    
 
   # weather
   sensor.yr_cloudiness:
