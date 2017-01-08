@@ -1,0 +1,128 @@
+  - alias: Turn on hallway light when sun sets
+    trigger:                                  
+      platform: sun                           
+      event: sunset                           
+    condition:                                
+      condition: state                        
+      entity_id: group.all_devices            
+      state: not_home                         
+    action:                                       
+      service: switch.turn_on                     
+      entity_id: switch.hallway_lamp              
+  - alias: Turn off hallway light at 18:30        
+    trigger:                                      
+      platform: time                              
+      after: "18:30:00"                           
+    condition:                                    
+      condition: state                            
+      entity_id: group.all_devices                
+      state: home                                 
+    action:                                       
+      service: switch.turn_off                    
+      entity_id: switch.hallway_lamp              
+  - alias: Hallway plant moisture monitor             
+    trigger:                                          
+      platform: numeric_state                         
+      entity_id: sensor.hallway_plant_moisture        
+      below: 25                                       
+    condition:                                        
+      condition: state                                
+      entity_id: group.all_devices                    
+      state: home                                     
+    action:                                           
+      service: notify.instapush                       
+      data_template:                                  
+        title: "Hallway plant moisture alert"         
+        message: "Plants in hallway need watering"          
+  - alias: Living room plant moisture monitor               
+    trigger:                                                
+      platform: numeric_state                               
+      entity_id: sensor.living_room_plant_moisture          
+      below: 25                                             
+    condition:                                              
+      condition: state                                      
+      entity_id: group.all_devices                          
+      state: home                                           
+    action:                                                 
+      service: notify.instapush                             
+      data_template:                                        
+        title: "Living room plant moisture alert"           
+        message: "Plants in living room need watering"          
+  - alias: Dining room plant moisture monitor                   
+    trigger:                                                    
+      platform: numeric_state                                   
+      entity_id: sensor.dining_room_plant_moisture              
+      below: 25                                                 
+    condition:                                                  
+      condition: state                                          
+      entity_id: group.all_devices                              
+      state: home                                               
+    action:                                                     
+      service: notify.instapush                                 
+      data_template:                                            
+        title: "Dining room plant moisture alert"               
+        message: "Plants in dining room need watering"          
+  - alias: Hallway plant battery monitoring                     
+    trigger:                                                    
+      platform: numeric_state                                   
+      entity_id: sensor.hallway_plant_battery                   
+      below: 15                                                 
+    condition:                                                  
+      condition: state                                          
+      entity_id: group.all_devices                              
+      state: home      
+    action:                                           
+      service: notify.instapush                       
+      data_template:                                  
+        title: "Hallway plant sensor battery is running low"
+        message: "Order more CR2032 button batteries"       
+  - alias: Living room plant battery monitoring             
+    trigger:                                                
+      platform: numeric_state                               
+      entity_id: sensor.living_room_plant_battery           
+      below: 15                                             
+    condition:                                              
+      condition: state                                      
+      entity_id: group.all_devices                          
+      state: home                                           
+    action:                                                 
+      service: notify.instapush                             
+      data_template:                                        
+        title: "Living room plant sensor battery is running low"
+        message: "Order more CR2032 button batteries"           
+  - alias: Dining room plant battery monitoring                 
+    trigger:                                                    
+      platform: numeric_state                                   
+      entity_id: sensor.dining_room_plant_battery               
+      below: 15                                                 
+    condition:                                                  
+      condition: state                                          
+      entity_id: group.all_devices                              
+      state: home                                               
+    action:                                                     
+      service: notify.instapush                                 
+      data_template:                                            
+        title: "Dining room plant sensor battery is running low"
+        message: "Order more CR2032 button batteries"           
+  - alias: Heating on                                           
+    trigger:                                                    
+      platform: state                                           
+      entity_id: climate.living_room                            
+      from: "off"                                               
+      to: heat                                                  
+    action:                                                     
+      service: notify.instapush                                 
+      data_template:                                            
+        title: "Heating"                                        
+        message: "Heating is on"                                
+  - alias: Heating off                                          
+    trigger:                                                    
+      platform: state                                           
+      entity_id: climate.living_room                            
+      from: heat                                                
+      to: "off"                                                 
+    action:                                                     
+      service: notify.instapush                                 
+      data_template:                                            
+        title: "Heating"                                        
+        message: "Heating is off"     
