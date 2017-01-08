@@ -12,7 +12,7 @@
   - alias: Turn off hallway light at <time>      
     trigger:                                      
       platform: time                              
-      after: "18:30:00"                           
+      after: "<time>"                         
     condition:                                    
       condition: state                            
       entity_id: group.all_devices                
