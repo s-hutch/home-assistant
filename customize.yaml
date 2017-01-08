@@ -3,15 +3,24 @@
 #################################################################
 
 # devices
-  device_tracker.<person's name here>_phone:
+  device_tracker.<person>s_phone:
     icon: mdi:human-<gender here>
-    friendly_name: <person's name here>
-  device_tracker.<person's name here>_ipad:
+    friendly_name: <person>
+  device_tracker.<person>s_ipad:
     icon: mdi:tablet-iPad
-    friendly_name: <person's name here> iPad
-  device_tracker.<person's name here>_phone:
+    friendly_name: <person>s iPad
+  device_tracker.<person>s_laptop:
+    icon: mdi:laptop
+    friendly_name: <person>s laptop    
+  device_tracker.<person>s_phone:
     icon: mdi:human-<gender here>
-    friendly_name: <person's name here>
+    friendly_name: <person>
+  device_tracker.<person>s_ipad:
+    icon: mdi:tablet-iPad
+    friendly_name: <person>s iPad
+  device_tracker.<person>s_laptop:
+    icon: mdi:laptop
+    friendly_name: <person>s laptop
 
 # sensors
   # plant sensors
