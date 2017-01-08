@@ -40,8 +40,10 @@
     entities:
       - device_tracker.<person>s_phone
       - device_tracker.<person>s_ipad
+      - device_tracker.<person>s_laptop
       - device_tracker.<person>s_phone
       - device_tracker.<person>s_ipad
+      - device_tracker.<person>s_laptop
   digital_ocean:                       
     name: Digital Ocean Droplet        
     icon: mdi:server            
