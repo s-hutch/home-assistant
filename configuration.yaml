@@ -42,6 +42,9 @@ camera:
     name: Kitchen Camera
     ffmpeg_bin: _REDACTED_
 
+digital_ocean:
+  access_token: _REDACTED_
+
 wemo:
 
 switch:
