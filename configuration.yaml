@@ -91,6 +91,11 @@ logbook:
 # Track the sun
 sun:
 
+binary_sensor:                                                                  
+  - platform: digital_ocean                                                     
+    droplets:                                                                   
+      - '_REDACTED_'  
+
 # Weather Prediction
 sensor:
   - platform: yr
