@@ -60,6 +60,9 @@ switch:
   - platform: tplink
     host: _REDACTED_
     name: fireplace
+  - platform: digital_ocean                                               
+    droplets:                                                             
+      - '_REDACTED_' 
 
 nest:
   client_id: _REDACTED_
