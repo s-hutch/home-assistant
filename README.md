@@ -18,5 +18,9 @@ Verion: 0.35.3
 
 - [iSmartAlarm Home Security System](http://amzn.to/2iRQUV0)
 
+# Notifications:
+
+- Instapush
+
 # Interface
 
