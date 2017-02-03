@@ -14,6 +14,7 @@ Verion: 0.35.3
 - 3x [Xiaomi Smart Plant Monitor](http://amzn.to/2irq852)
 - 2x [Motorola Focus 66 Wi-Fi HD Audio and Video Home Monitoring Camera](http://amzn.to/2i2UIFS)
 - 1x [Digital Ocean Droplet](https://m.do.co/c/2b8f591b2dad)
+- 1x [PiGlow](http://amzn.to/2jKazoQ)
 
 # Device not in home assistant:
 
