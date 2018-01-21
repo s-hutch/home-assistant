@@ -78,6 +78,13 @@
       - light.piglow
       - light.hue_go_1
       - light.hue_white_lamp_1
+  main_bedroom_lights:
+    name: Main Bedroom Lights
+    icon: mdi:lightbulb-on
+    entities:
+      - light.hue_color_candle_1
+      - light.hue_color_candle_2
+      - light.hue_color_lamp_1 
   living_room_remote:
      name: Media Remote
      icon: mdi:remote
