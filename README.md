@@ -23,7 +23,7 @@ Verion: 0.61.1
 
 # Device not in home assistant:
 
-- [iSmartAlarm Home Security System](http://amzn.to/2iRQUV0)
+- [iSmartAlarm Home Security System](http://amzn.to/2iRQUV0) - Now partially integrated with ifttt
 
 # Notifications:
 
