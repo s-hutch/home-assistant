@@ -1,0 +1,226 @@
+- id: fish_1
+  alias: Notify <person> to water plants
+  trigger:
+  - platform: state
+    entity_id: device_tracker.<persons>_iphone
+    from: not_home
+    to: home
+  condition:
+  - condition: or
+    conditions:
+    - condition: template
+      value_template: '{{ states.sensor.dining_room_plant_moisture < 25 }}'
+    - condition: template
+      value_template: '{{ states.sensor.hallway_plant_moisture < 25 }}'
+    - condition: template
+      value_template: '{{ states.sensor.living_room_plant_moisture < 25 }}'
+  action:
+  - service: notify.ios_<person>_iphone
+    data:
+      title: Water plants
+      message: '{%- if float(states.sensor.dining_room_plant_moisture.state) < 25  -%}
+        Dining room plant needs watering {{states.sensor.dining_room_plant_moisture.state
+        }} %,  {%- endif %} {%- if float(states.sensor.living_room_plant_moisture.state)
+        < 25  -%} Living room plant needs watering {{states.sensor.living_room_plant_moisture.state
+        }}%,  {%- endif %} {%- if float(states.sensor.hallway_plant_moisture.state)
+        < 25  -%} Hallway plant needs watering {{states.sensor.hallway_plant_moisture.state
+        }} %, {%- endif %}
+
+        '
+- id: fish_2
+  alias: Bedroom lights off when light
+  trigger:
+  - platform: template
+    value_template: '{% if states.light.hue_color_candle_1.state == "on" and  states.light.hue_color_candle_2.state
+      == "on" and  float(states.sensor.bedroom_lux.state) >= float(states.sensor.bedroom_min_lux.state)  %}true{%
+      endif %}'
+  condition:
+  - condition: template
+    value_template: '{% if  states.light.hue_color_candle_1.state == "on" and  states.light.hue_color_candle_2.state
+      == "on" %}true{% endif %}'
+  action:
+  - service: light.turn_off
+    data:
+      entity_id: light.hue_color_candle_1,light.hue_color_candle_2
+      transition: 3
+- id: fish_3
+  alias: Arm alarm when away
+  trigger:
+  - platform: state
+    entity_id: device_tracker.<persons>_iphone
+    from: home
+    to: not_home
+  condition:
+  - condition: state
+    entity_id: device_tracker.<persons>_iphone
+    state: not_home
+  action:
+  - service: input_boolean.turn_on
+    data:
+      entity_id: input_boolean.arm_alarm_switch
+- id: fish_4
+  alias: Disarm alarm when home <person>
+  trigger:
+  - platform: state
+    entity_id: device_tracker.<persons>_iphone
+    from: not_home
+    to: home
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.arm_alarm_switch
+- id: fish_5
+  alias: Disarm alarm when home <person>
+  trigger:
+  - platform: state
+    entity_id: device_tracker.<persons>_iphone
+    from: not_home
+    to: home
+  action:
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.arm_alarm_switch
+- id: fish_8
+  alias: Arm the alarm
+  trigger:
+  - platform: state
+    entity_id: input_boolean.arm_alarm_switch
+    from: 'off'
+    to: 'on'
+  action:
+  - service: ifttt.trigger
+    data:
+      event: left_home
+- id: fish_9
+  alias: Disarm the alarm
+  trigger:
+  - platform: state
+    entity_id: input_boolean.arm_alarm_switch
+    from: 'on'
+    to: 'off'
+  action:
+  - service: ifttt.trigger
+    data:
+      event: arrive_home
+- id: fish_10
+  alias: Turn on hallway light when sun sets
+  trigger:
+  - platform: sun
+    event: sunset
+  condition:
+  - condition: time
+    before: '18:29:00'
+  action:
+  - service: switch.turn_on
+    entity_id: switch.hallway_lamp
+- id: fish_11
+  alias: Turn off hallway light at 22:00
+  trigger:
+  - at: '22:00:00'
+    platform: time
+  action:
+  - data:
+      entity_id: switch.hallway_lamp
+    entity_id: switch.hallway_lamp
+    service: switch.turn_off
+- id: fish_12
+  alias: Hallway plant moisture monitor
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.hallway_plant_moisture
+    below: 25
+  condition:
+  - condition: state
+    entity_id: group.all_devices
+    state: home
+  action:
+  - service: notify.ios_<persons>_iphone
+    data_template:
+      title: Hallway plant moisture alert
+      message: Plants in hallway need watering
+- id: fish_13
+  alias: Living room plant moisture monitor
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.living_room_plant_moisture
+    below: 25
+  condition:
+  - condition: state
+    entity_id: group.all_devices
+    state: home
+  action:
+  - service: notify.ios_<persons>_iphone
+    data_template:
+      title: Living room plant moisture alert
+      message: Plants in living room need watering
+- id: fish_14
+  alias: Dining room plant moisture monitor
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.dining_room_plant_moisture
+    below: 25
+  condition:
+  - condition: state
+    entity_id: group.all_devices
+    state: home
+  action:
+  - service: notify.ios_<persons>_iphone
+    data_template:
+      title: Dining room plant moisture alert
+      message: Plants in dining room need watering
+- id: fish_15
+  alias: Hallway plant battery monitoring
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.hallway_plant_battery
+    below: 15
+  condition:
+  - condition: state
+    entity_id: group.all_devices
+    state: home
+  action:
+  - service: notify.ios_<persons>_iphone
+    data_template:
+      title: Hallway plant sensor battery is running low
+      message: Order more CR2032 button batteries
+- id: fish_16
+  alias: Living room plant battery monitoring
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.living_room_plant_battery
+    below: 15
+  condition:
+  - condition: state
+    entity_id: group.all_devices
+    state: home
+  action:
+  - service: notify.ios_<persons>_iphone
+    data_template:
+      title: Living room plant sensor battery is running low
+      message: Order more CR2032 button batteries
+- id: fish_17
+  alias: Dining room plant battery monitoring
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.dining_room_plant_battery
+    below: 15
+  condition:
+  - condition: state
+    entity_id: group.all_devices
+    state: home
+  action:
+  - service: notify.ios_<persons>_iphone
+    data_template:
+      title: Dining room plant sensor battery is running low
+      message: Order more CR2032 button batteries
+- id: fish_20
+  alias: Digital Ocean Droplet Down
+  trigger:
+  - platform: state
+    entity_id: switch.<droplet>
+    to: 'off'
+  action:
+  - service: notify.ios_<persons>_iphone
+    data_template:
+      title: Digital Ocean
+      message: Droplet is down
