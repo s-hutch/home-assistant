@@ -27,7 +27,6 @@ http:
   ssl_key: _REDACTED_
 
 device_tracker:
-  - platform: bluetooth_tracker
 
 ffmpeg:
   ffmpeg_bin: _REDACTED_
@@ -41,19 +40,22 @@ camera:
     input: _REDACTED_
     name: Kitchen Camera
     ffmpeg_bin: _REDACTED_
+  - platform: mjpeg
+    mjpeg_url: _REDACTED_
+    name: 3dprinter
+    username: _REDACTED_
+    password: _REDACTED_
 
 digital_ocean:
   access_token: _REDACTED_
 
+octoprint:
+  host: _REDACTED_
+  api_key: _REDACTED_
+
 wemo:
 
 switch:
-# Commented out as not currently working
-#  - platform: orvibo
-#    switches:
-#      - host: _REDACTED_
-#        mac: _REDACTED_
-#        name: fireplace
   - platform: tplink
     host: _REDACTED_
     name: sofa lamp
@@ -75,6 +77,7 @@ media_player:
   - platform: kodi
     host: _REDACTED_
   - platform: sonos
+  - platform: webostv
 
 # Checks for available updates
 updater:
@@ -151,15 +154,33 @@ sensor:
       - light
       - temperature
       - battery
-
+  - platform: rest
+    resource: _REDACTED_
+    value_template: '{{ value_json.state.lightlevel }}'
+    unit_of_measurement: Lux
+    name: 'Bedroom Lux'
+    scan_interval: 2
+  - platform: rest
+    resource: _REDACTED_
+    value_template: '{{ value_json.config.tholddark }}'
+    unit_of_measurement: Lux
+    name: 'Bedroom Min Lux'
+    scan_interval: 2
+    
 automation: !include automation.yaml
 
 group: !include groups.yaml
 
-notify:
-  - name: instapush
-    platform: instapush
-    api_key: _REDACTED_
-    app_secret: _REDACTED_
-    event: message
-    tracker: state
+light:
+  - platform: piglow
+
+input_boolean:
+  arm_alarm_switch:
+    name: Armed
+    initial: off
+    icon: mdi:lock-outline
+
+shell_command:
+  arm_alarm: _REDACTED_
+  disarm_alarm: _REDACTED_
+  
