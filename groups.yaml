@@ -12,6 +12,12 @@
       - group.living_room_remote
       - group.device_locations
       - group.plants
+      - group.main_bedroom_lights
+  alarm:
+    name: Home Alarm
+    icon: mdi:lock
+    entities:
+      - input_boolean.arm_alarm_switch
   automation:
     name: Automation
     icon: mdi:message-alert
@@ -23,6 +29,7 @@
     entities:
       - sensor.hallway_plant_battery
       - sensor.living_room_plant_battery
+      - sensor.dining_room_plant_battery
   cameras:
     name: Cameras
     view: yes
@@ -30,6 +37,7 @@
     entities:
       - camera.kitchen
       - camera.hallwaycam
+      - camera.3dprinter
   climate:
     name: Climate
     icon: mdi:weather-partlycloudy
@@ -64,9 +72,12 @@
     name: Living Room Lights
     icon: mdi:lightbulb-on
     entities:
-      - switch.living_room_lamp
-      - switch.sofa_lamp
+      - switch.living_room_lamp                                                                                          
       - switch.fireplace
+      - light.hue_lightstrip_1
+      - light.piglow
+      - light.hue_go_1
+      - light.hue_white_lamp_1
   living_room_remote:
      name: Media Remote
      icon: mdi:remote
@@ -100,7 +111,8 @@
       - automation.living_room_plant_battery_monitoring
       - automation.dining_room_plant_battery_monitoring
       - automation.heating_on                          
-      - automation.heating_off                         
+      - automation.heating_off   
+      - automation.digital_ocean_droplet_down
   sensors:                                             
     name: Sensors                                      
     view: yes                                          
@@ -123,7 +135,8 @@
     name: Indoor Temperature                           
     entities:                                          
       - sensor.hallway_plant_temperature               
-      - sensor.living_room_plant_temperature           
+      - sensor.living_room_plant_temperature 
+      - sensor.dining_room_plant_temperature
       - sensor.living_room_thermostat_temperature             
   weather:                                             
     name: Weather                                      
