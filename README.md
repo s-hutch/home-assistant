@@ -19,6 +19,7 @@ Verion: 0.61.1
 - 1x [Phillips Hue white E27 light](http://amzn.to/2Dvd6lG)
 - 1x Phillips Hue lightstrip (v1)
 - 1x [Phillips Hue Go light](http://amzn.to/2Dufby5)
+- 2x [Phillips Hue motion sensors](http://amzn.to/2DvBWRA)
 
 # Device not in home assistant:
 
