@@ -78,15 +78,12 @@
     icon: mdi:speedometer
     friendly_name: Wind Speed
 
-
 # switch
+  switch.hallway_lamp:                                                                                                                   
+    icon: mdi:lightbulb
+  switch.living_room_lamp:                                                                                                                          
+    icon: mdi:lightbulb  
+  switch.sofa_lamp:                                                                                                                
+    icon: mdi:lightbulb
   switch.fireplace:
-    icon: mdi:water-percen
-  switch.hallway_lamp:
-    icon: mdi:lightbulb-on-outline
-  switch.living_room_lamp:
-    icon: mdi:lightbulb-on-outline
-  switch.sofa_lamp:
-    icon: mdi:lightbulb-on-outline
-    
-    
+    icon: mdi:lightbulb  
